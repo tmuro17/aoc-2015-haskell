@@ -1,0 +1,10 @@
+resolver: lts-14.16
+
+
+ghc-options:
+  $locals: -O2 -Wall -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N
+
+packages:
+  - day01
+  - day02
+  - day03
