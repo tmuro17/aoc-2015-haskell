@@ -82,4 +82,5 @@ largestCost pm = maximum $ map (flip (flip (aux pm) []) 0) $ M.keys pm
             Nothing -> error "Bad start"
             Just dstInf -> case filter (not . flip elem seen . fst) dstInf of
                 [] -> cost
-                notSeen -> maximum $ (:) minBound $ map (\(d, w) -> aux m d (start:seen) (w + cost)) notSeen
+                notSeen -> maximum $ (:) minBound $ map (uncurry ((. (cost +)) . flip (aux m) (start : seen))) notSeen
+--                notSeen -> maximum $ (:) minBound $ map (\(d, w) -> aux m d (start:seen) (w + cost)) notSeen
